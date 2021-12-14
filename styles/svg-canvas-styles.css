@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'co-headline-bold';
+  src: url("../fonts/_Dalton_Maag_Co_Headline_Bold.ttf");
+}
+
 #cloudm-canvas {
-  border: 2px solid black;
+  width: 100%;
 }

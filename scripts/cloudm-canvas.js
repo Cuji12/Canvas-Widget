@@ -1,19 +1,49 @@
 window.onload = function() { 
     // Colour variables
-    var colorWhite = "#FFFFFF"
-    var colorGrey = "#939393";
-    var colorOrange = "#ED730D";
-    var colorLighGrey = "#E2E2E2";
-    var colorDarkGrey = "#555555";
-    var colorBlue = "#128CF2";
-    var colorYellow = "#FABD14";
-    var colorRed = "#E30817"
-    // Font variable
-    var fontMontSerrat = "Montserrat, sans-serif";
-    fontCoHeadline = "";
+    const colorWhite = "#FFFFFF"
+    const colorGrey = "#939393";
+    const colorOrange = "#ED730D";
+    const colorLighGrey = "#E2E2E2";
+    const colorDarkGrey = "#555555";
+    const colorBlue = "#128CF2";
+    const colorYellow = "#FABD14";
+    const colorRed = "#E30817"
+    // Font variable.
+    const fontMontSerrat = "Montserrat, Arial, Helvetica, sans-serif";
+    const fontCoHeadline = "'co-headline-bold', Arial, Helvetica, sans-serif";
+    // Link variables - only requires relative URL.
+    // Outer Circle
+    const moversLink = '' // populates both title and circle links.
+    const joinersLink = ''
+    const automateLink = ''
+    const joinersLink1 = '' // refers to link at the top.
+    const joinersLink2 = ''
+    const joinersLink3 = ''
+    const moversLink1 = ''
+    const automateLink1 = ''
+    // Migrate / Starters Branch
+    const migrateCircleLink = ''
+    const migrateLink1 = '' // refers to link at the top.
+    const migrateLink2 = ''
+    const migrateLink3 = ''
+    const startersCircleLink = ''
+    const startersLink1 = '' // refers to link at the top.
+    const startersLink2 = ''
+    const startersLink3 = ''
+    // Leavers / Archive Branch
+    const leaversCircleLink = ''
+    const leaversLink1 = '' // refers to link at the top.
+    const leaversLink2 = ''
+    const archiveCircleLink = ''
+    const archiveLink1 = '' // refers to link at the top.
+    const archiveLink2 = ''
 
-    var width = window.innerWidth;
-    var height = window.innerHeight;
+    // Creating to loop through and apply similar styling to objects.
+    var drawnObjectsArray = [innerCircleGoogleLogo, innerCircleMicrosoft365Logo, innerCircleText, outerCircleMovers, outerCircleMoversTitle, outerCircleJoiners,
+    outerCircleJoinersTitle, outerCircleJoinersLink1, outerCircleJoinersLink2, outerCircleJoinersLink3, outerCircleAutomate, outerCircleAutomateTitle]
+
+    var width = 2560;
+    var height = 1330;
 
     var stage = new Konva.Stage({
       container: 'cloudm-canvas',
@@ -27,13 +57,13 @@ window.onload = function() {
     var innerCircle = new Konva.Circle({
       x: 1800,
       y: stage.height() / 2,
-      radius: 180,
+      radius: 200,
       fill: colorLighGrey,
     });
 
     var innerCircleText = new Konva.Text({
         x: 1705,
-        y: (stage.height() / 2) + 75,
+        y: 740,
         text: 'Avoid vendor lock in',
         fontSize: 24,
         fontFamily: 'Calibri', // change to variable
@@ -43,11 +73,11 @@ window.onload = function() {
     var innerCircleGoogleLogo = new Image();
     innerCircleGoogleLogo.onload = function () {
       var innerCircleGoogleLogoImage = new Konva.Image({
-        x: 1635,
-        y: (stage.height() / 2) - 45,
+        x: 1620,
+        y: 620,
         image: innerCircleGoogleLogo,
-        width: 90,
-        height: 90,
+        width: 100,
+        height: 100,
       });
       layer.add(innerCircleGoogleLogoImage);
       innerCircleGoogleLogoImage.on('mouseenter', function () {
@@ -63,10 +93,10 @@ window.onload = function() {
     innerCircleMicrosoft365Logo.onload = function () {
       var innerCircleMicrosoft365LogoImage = new Konva.Image({
         x: 1875,
-        y: (stage.height() / 2) - 45,
+        y: 620,
         image: innerCircleMicrosoft365Logo,
-        width: 90,
-        height: 90,
+        width: 100,
+        height: 100,
       });
       layer.add(innerCircleMicrosoft365LogoImage);
       innerCircleMicrosoft365LogoImage.on('mouseenter', function () {
@@ -81,16 +111,15 @@ window.onload = function() {
     var innerCircleTwoWayArrow = new Image();
     innerCircleTwoWayArrow.onload = function () {
       var innerCircleTwoWayArrowImage = new Konva.Image({
-        x: 1760,
-        y: (stage.height() / 2) - 22.5,
+        x: 1755,
+        y: 642.5,
         image: innerCircleTwoWayArrow,
-        width: 75,
-        height: 45,
+        width: 82.5,
+        height: 49.5,
       });
       layer.add(innerCircleTwoWayArrowImage);
     }
     innerCircleTwoWayArrow.src = "../assets/two-way-dotted-arrow.svg";
-
 
     // Outer circle section.
     var outerCircle = new Konva.Circle({
@@ -113,7 +142,7 @@ window.onload = function() {
     outerCircleMovers.onload = function () {
       var outerCircleMoversImage = new Konva.Image({
         x: 1385,
-        y: (stage.height() / 2) - 70,
+        y: 595,
         image: outerCircleMovers,
         width: 140,
         height: 140,
@@ -130,12 +159,23 @@ window.onload = function() {
 
     var outerCircleMoversTitle = new Konva.Text({
       x: 1200,
-      y: (stage.height() / 2) - 19,
+      y: 646,
       text: 'Movers',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorOrange
+    });
+
+    var outerCircleMoversLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Least Privilege Access',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
     });
 
     var outerCircleJoinersBackground = new Konva.Circle({
@@ -165,13 +205,6 @@ window.onload = function() {
         outerCircleJoinersLink1.show();
         outerCircleJoinersLink2.show();
         outerCircleJoinersLink3.show();
-        layer.transform({
-          point: (1720, 250)
-        });
-        layer.scale({
-          x: 3,
-          y: 3,
-        })
       });
     };
 
@@ -183,7 +216,7 @@ window.onload = function() {
       text: 'Joiners',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorOrange
     });
 
@@ -231,7 +264,7 @@ window.onload = function() {
     outerCircleAutomate.onload = function () {
       var outerCircleAutomateImage = new Konva.Image({
         x: 2075,
-        y: (stage.height() / 2) - 70,
+        y: 595,
         image: outerCircleAutomate,
         width: 140,
         height: 140,
@@ -248,14 +281,24 @@ window.onload = function() {
 
     var outerCircleAutomateTitle = new Konva.Text({
       x: 2250,
-      y: (stage.height() / 2) - 19,
+      y: 646,
       text: 'Automate',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorOrange
     });
 
+    var outerCircleAutomateLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Smart Teams',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
 
     // Migrate / Starters branch section.
     var topBranch = new Image();
@@ -272,14 +315,47 @@ window.onload = function() {
     };
     topBranch.src = '../assets/dotted-branch-left.svg';
 
-    var topBranchMigrateText = new Konva.Text({
+    var topBranchMigrateTitle = new Konva.Text({
       x: 413,
       y: 135,
       text: 'Migrate',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorBlue
+    });
+
+    var outerCircleMigrateLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'File & Email',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var outerCircleMigrateLink2 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Mergers & Acquisition',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var outerCircleMigrateLink3 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Domain Consolidation',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
     });
 
     var topBranchMigrateBackground = new Konva.Circle({
@@ -302,13 +378,13 @@ window.onload = function() {
     };
     topBranchMigrateCircle.src = '../assets/migrate-circle.svg';
 
-    var topBranchStartersText = new Konva.Text({
+    var topBranchStartersTitle = new Konva.Text({
       x: 413,
       y: 472,
       text: 'Starters',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorYellow
     });
 
@@ -346,13 +422,13 @@ window.onload = function() {
     };
     bottomBranch.src = '../assets/dotted-branch-left.svg';
 
-    var bottomBranchLeaversText = new Konva.Text({
+    var bottomBranchLeaversTitle = new Konva.Text({
       x: 413,
       y: 815,
       text: 'Leavers',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorRed
     });
 
@@ -382,13 +458,13 @@ window.onload = function() {
     };
     bottomBranchLeaversCircle.src = '../assets/leavers-circle.svg';
 
-    var bottomBranchArchiveText = new Konva.Text({
+    var bottomBranchArchiveTitle = new Konva.Text({
       x: 413,
       y: 1150,
       text: 'Archive',
       fontSize: 40,
       // fontStyle: 'bold',
-      fontFamily: fontMontSerrat,
+      fontFamily: fontCoHeadline,
       fill: colorDarkGrey
     });
 
@@ -418,61 +494,70 @@ window.onload = function() {
     };
     bottomBranchArchiveCircle.src = '../assets/archive-circle.svg';
 
-    // Events
-    // Outer circle
-    outerCircleMoversTitle.on('mouseenter', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    outerCircleMoversTitle.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
-    outerCircleJoinersTitle.on('mouseenter', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    outerCircleJoinersTitle.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
-    outerCircleAutomateTitle.on('mouseenter', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    outerCircleAutomateTitle.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
+  // ** BUNDLED EVENTS TO BE MOVED INTO "cloudm-canvas-events.js" **
+  // ** OUTER CIRCLE **
+  // Movers - Hover
+   outerCircleMoversTitle.on('mouseenter', function () {
+    stage.container().style.cursor = 'pointer';
+    outerCircleMoversTitle.textDecoration('underline');
+  });
+  outerCircleMoversTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+    outerCircleMoversTitle.textDecoration('');
+  });
+  // Joiners - Hover
+  outerCircleJoinersTitle.on('mouseenter', function () {
+    stage.container().style.cursor = 'pointer';
+    outerCircleJoinersTitle.textDecoration('underline');
+  });
+  outerCircleJoinersTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+    outerCircleJoinersTitle.textDecoration('');
+  });
+  // Automate - Hover
+  outerCircleAutomateTitle.on('mouseenter', function () {
+    stage.container().style.cursor = 'pointer';
+  });
+  outerCircleAutomateTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+  });
+  // Movers - Click
 
-    outerCircleJoinersTitle.on('click', function () {
-      outerCircleJoinersLink1.show();
-      outerCircleJoinersLink2.show();
-      outerCircleJoinersLink3.show();
-    });
+  // Joiners - Click
+  outerCircleJoinersTitle.on('click', function () {
+    outerCircleJoinersLink1.show();
+    outerCircleJoinersLink2.show();
+    outerCircleJoinersLink3.show();
+  });
+  // Automate - Click
 
+  // ** MIGRATE / STARTERS BRANCH **
+  topBranchMigrateTitle.on('mouseover', function () {
+    stage.container().style.cursor = 'pointer';
+  });
+  topBranchMigrateTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+  });
+  topBranchStartersTitle.on('mouseover', function () {
+    stage.container().style.cursor = 'pointer';
+  });
+  topBranchStartersTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+  });
 
-    // Migrate / Starters branch
-    topBranchMigrateText.on('mouseover', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    topBranchMigrateText.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
-    topBranchStartersText.on('mouseover', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    topBranchStartersText.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
-
-    // Leavers / Archive branch
-    bottomBranchLeaversText.on('mouseover', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    bottomBranchLeaversText.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
-    bottomBranchArchiveText.on('mouseover', function () {
-      stage.container().style.cursor = 'pointer';
-    });
-    bottomBranchArchiveText.on('mouseleave', function () {
-      stage.container().style.cursor = 'default';
-    });
+  // ** LEAVERS / ARCHIVE BRANCH **
+  bottomBranchLeaversTitle.on('mouseover', function () {
+    stage.container().style.cursor = 'pointer';
+  });
+  bottomBranchLeaversTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+  });
+  bottomBranchArchiveTitle.on('mouseover', function () {
+    stage.container().style.cursor = 'pointer';
+  });
+  bottomBranchArchiveTitle.on('mouseleave', function () {
+    stage.container().style.cursor = 'default';
+  });
 
     var period = 2000;
     
@@ -493,14 +578,37 @@ window.onload = function() {
     layer.add(outerCircleJoinersTitle);
     layer.add(outerCircleAutomateTitle);
     layer.add(topBranchMigrateBackground);
-    layer.add(topBranchMigrateText);
+    layer.add(topBranchMigrateTitle);
     layer.add(topBranchStartersBackground);
-    layer.add(topBranchStartersText);
-    layer.add(bottomBranchLeaversText);
+    layer.add(topBranchStartersTitle);
+    layer.add(bottomBranchLeaversTitle);
     layer.add(bottomBranchLeaversBackground);
-    layer.add(bottomBranchArchiveText);
+    layer.add(bottomBranchArchiveTitle);
     layer.add(bottomBranchArchiveBackground);
     layer.add(outerCircleJoinersLink1);
     layer.add(outerCircleJoinersLink2);
     layer.add(outerCircleJoinersLink3);
+
+    function fitStageIntoParentContainer() {
+      var container = document.querySelector('#cloudm-canvas');
+
+      // now we need to fit stage into parent container
+      var containerWidth = container.offsetWidth;
+
+      // but we also make the full scene visible
+      // so we need to scale all objects on canvas
+      var scale = containerWidth / width;
+
+      stage.width(width * scale);
+      stage.height(height * scale);
+      stage.scale({ x: scale, y: scale });
+    }
+
+    fitStageIntoParentContainer();
+    // adapt the stage on any window resize
+    window.addEventListener('resize', fitStageIntoParentContainer);
+
+    function navigatePage(url) {
+      location.assign(url); 
+    }
 }
