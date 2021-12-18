@@ -17,7 +17,7 @@ window.onload = function() {
     const joinersLink = ''
     const automateLink = ''
     const joinersLink1 = '' // refers to link at the top.
-    const joinersLink2 = ''
+    const joinersLink2 = 'www.google.com'
     const joinersLink3 = ''
     const moversLink1 = ''
     const automateLink1 = ''
@@ -37,10 +37,6 @@ window.onload = function() {
     const archiveCircleLink = ''
     const archiveLink1 = '' // refers to link at the top.
     const archiveLink2 = ''
-
-    // Creating to loop through and apply similar styling to objects.
-    var drawnObjectsArray = [innerCircleGoogleLogo, innerCircleMicrosoft365Logo, innerCircleText, outerCircleMovers, outerCircleMoversTitle, outerCircleJoiners,
-    outerCircleJoinersTitle, outerCircleJoinersLink1, outerCircleJoinersLink2, outerCircleJoinersLink3, outerCircleAutomate, outerCircleAutomateTitle]
 
     var width = 2560;
     var height = 1330;
@@ -87,7 +83,7 @@ window.onload = function() {
         stage.container().style.cursor = 'default';
       });
     };
-    innerCircleGoogleLogo.src = '../assets/google-logo.svg';
+    innerCircleGoogleLogo.src = './assets/google-logo.svg';
 
     var innerCircleMicrosoft365Logo = new Image();
     innerCircleMicrosoft365Logo.onload = function () {
@@ -106,7 +102,7 @@ window.onload = function() {
         stage.container().style.cursor = 'default';
       });
     }
-    innerCircleMicrosoft365Logo.src = "../assets/microsoft365-logo.svg";
+    innerCircleMicrosoft365Logo.src = "./assets/microsoft365-logo.svg";
 
     var innerCircleTwoWayArrow = new Image();
     innerCircleTwoWayArrow.onload = function () {
@@ -119,7 +115,7 @@ window.onload = function() {
       });
       layer.add(innerCircleTwoWayArrowImage);
     }
-    innerCircleTwoWayArrow.src = "../assets/two-way-dotted-arrow.svg";
+    innerCircleTwoWayArrow.src = "./assets/two-way-dotted-arrow.svg";
 
     // Outer circle section.
     var outerCircle = new Konva.Circle({
@@ -155,7 +151,7 @@ window.onload = function() {
         stage.container().style.cursor = 'default';
       });
     };
-    outerCircleMovers.src = '../assets/movers-circle.svg';
+    outerCircleMovers.src = './assets/movers-circle.svg';
 
     var outerCircleMoversTitle = new Konva.Text({
       x: 1200,
@@ -202,13 +198,34 @@ window.onload = function() {
         stage.container().style.cursor = 'default';
       });
       outerCircleJoinersImage.on('click', function () {
-        outerCircleJoinersLink1.show();
-        outerCircleJoinersLink2.show();
-        outerCircleJoinersLink3.show();
+        joinersZoomIn.play();
       });
     };
+    outerCircleJoiners.src = './assets/joiners-circle.svg';
 
-    outerCircleJoiners.src = '../assets/joiners-circle.svg';
+    var outerCircleJoinersBackButton = new Image();
+    outerCircleJoinersBackButton.onload = function () {
+      var outerCircleJoinersBackButtonImage = new Konva.Image({
+        x: 1856,
+        y: 248,
+        image: outerCircleJoinersBackButton,
+        width: 42,
+        height: 25,
+        visible: false,
+        opacity: 0
+      });
+      layer.add(outerCircleJoinersBackButtonImage);
+      outerCircleJoinersBackButtonImage.on('mouseenter', function () {
+        stage.container().style.cursor = 'pointer';
+      });
+      outerCircleJoinersBackButtonImage.on('mouseleave', function () {
+        stage.container().style.cursor = 'default';
+      });
+      outerCircleJoinersBackButtonImage.on('click', function () {
+        joinersZoomOut.play();
+      });
+    };
+    outerCircleJoinersBackButton.src = './assets/back-arrows/orange-back-arrow.svg';
 
     var outerCircleJoinersTitle = new Konva.Text({
       x: 1720,
@@ -228,7 +245,9 @@ window.onload = function() {
       // fontStyle: 'bold',
       fontFamily: fontMontSerrat,
       fill: colorDarkGrey,
-      visible: false
+      opacity: 0,
+      visible: false,
+      name: joinersLink1
     });
 
     var outerCircleJoinersLink2 = new Konva.Text({
@@ -239,7 +258,9 @@ window.onload = function() {
       // fontStyle: 'bold',
       fontFamily: fontMontSerrat,
       fill: colorDarkGrey,
-      visible: false
+      opacity: 0,
+      visible: false,
+      name: joinersLink2
     });
 
     var outerCircleJoinersLink3 = new Konva.Text({
@@ -250,7 +271,9 @@ window.onload = function() {
       // fontStyle: 'bold',
       fontFamily: fontMontSerrat,
       fill: colorDarkGrey,
-      visible: false
+      opacity: 0,
+      visible: false,
+      name: joinersLink3
     });
 
     var outerCircleAutomateBackground = new Konva.Circle({
@@ -277,7 +300,7 @@ window.onload = function() {
         stage.container().style.cursor = 'default';
       });
     };
-    outerCircleAutomate.src = '../assets/automate-circle.svg';
+    outerCircleAutomate.src = './assets/automate-circle.svg';
 
     var outerCircleAutomateTitle = new Konva.Text({
       x: 2250,
@@ -313,7 +336,7 @@ window.onload = function() {
       layer.add(topBranchImage);
       
     };
-    topBranch.src = '../assets/dotted-branch-left.svg';
+    topBranch.src = './assets/dotted-branch-left.svg';
 
     var topBranchMigrateTitle = new Konva.Text({
       x: 413,
@@ -325,7 +348,7 @@ window.onload = function() {
       fill: colorBlue
     });
 
-    var outerCircleMigrateLink1 = new Konva.Text({
+    var topBranchMigrateLink1 = new Konva.Text({
       x: 1640,
       y: 165,
       text: 'File & Email',
@@ -336,7 +359,7 @@ window.onload = function() {
       visible: false
     });
 
-    var outerCircleMigrateLink2 = new Konva.Text({
+    var topBranchMigrateLink2 = new Konva.Text({
       x: 1640,
       y: 165,
       text: 'Mergers & Acquisition',
@@ -347,7 +370,7 @@ window.onload = function() {
       visible: false
     });
 
-    var outerCircleMigrateLink3 = new Konva.Text({
+    var topBranchMigrateLink3 = new Konva.Text({
       x: 1640,
       y: 165,
       text: 'Domain Consolidation',
@@ -365,18 +388,24 @@ window.onload = function() {
       fill: colorWhite,
     });
 
-    var topBranchMigrateCircle = new Image();
-    topBranchMigrateCircle.onload = function () {
-      var topBranchMigrateCircleImage = new Konva.Image({
+    var topBranchMigrate = new Image();
+    topBranchMigrate.onload = function () {
+      var topBranchMigrateImage = new Konva.Image({
         x: 600,
         y: 84,
-        image: topBranchMigrateCircle,
+        image: topBranchMigrate,
         width: 140,
         height: 140,
       });
-      layer.add(topBranchMigrateCircleImage);
+      layer.add(topBranchMigrateImage);
+      topBranchMigrateImage.on('mouseenter', function () {
+        stage.container().style.cursor = 'pointer';
+      });
+      topBranchMigrateImage.on('mouseleave', function () {
+        stage.container().style.cursor = 'default';
+      });
     };
-    topBranchMigrateCircle.src = '../assets/migrate-circle.svg';
+    topBranchMigrate.src = './assets/migrate-circle.svg';
 
     var topBranchStartersTitle = new Konva.Text({
       x: 413,
@@ -395,18 +424,58 @@ window.onload = function() {
       fill: colorWhite,
     });
 
-    var topBranchStartersCircle = new Image();
-    topBranchStartersCircle.onload = function () {
-      var topBranchStartersCircleImage = new Konva.Image({
+    
+    var topBranchStartersLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'HR Integration',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var topBranchStartersLink2 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'IDM Integration',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var topBranchStartersLink3 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'AD Integration',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var topBranchStarters = new Image();
+    topBranchStarters.onload = function () {
+      var topBranchStartersImage = new Konva.Image({
         x: 600,
         y: 420,
-        image: topBranchStartersCircle,
+        image: topBranchStarters,
         width: 140,
         height: 140,
       });
-      layer.add(topBranchStartersCircleImage);
+      layer.add(topBranchStartersImage);
+      topBranchStartersImage.on('mouseenter', function () {
+        stage.container().style.cursor = 'pointer';
+      });
+      topBranchStartersImage.on('mouseleave', function () {
+        stage.container().style.cursor = 'default';
+      });
     };
-    topBranchStartersCircle.src = '../assets/starters-circle.svg';
+    topBranchStarters.src = './assets/starters-circle.svg';
 
     // Leavers / Archive branch section.
     var bottomBranch = new Image();
@@ -420,7 +489,7 @@ window.onload = function() {
       });
       layer.add(bottomBranchImage);
     };
-    bottomBranch.src = '../assets/dotted-branch-left.svg';
+    bottomBranch.src = './assets/dotted-branch-left.svg';
 
     var bottomBranchLeaversTitle = new Konva.Text({
       x: 413,
@@ -432,6 +501,28 @@ window.onload = function() {
       fill: colorRed
     });
 
+    var bottomBranchLeaversLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Revoke Access',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var bottomBranchLeaversLink2 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Migrate Emails',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
     var bottomBranchLeaversBackground = new Konva.Circle({
       x: 100 + 70,
       y: 800,
@@ -439,24 +530,24 @@ window.onload = function() {
       fill: colorWhite,
     });
 
-    var bottomBranchLeaversCircle = new Image();
-    bottomBranchLeaversCircle.onload = function () {
-      var bottomBranchLeaversCircleImage = new Konva.Image({
+    var bottomBranchLeavers = new Image();
+    bottomBranchLeavers.onload = function () {
+      var bottomBranchLeaversImage = new Konva.Image({
         x: 600,
         y: 765,
-        image: bottomBranchLeaversCircle,
+        image: bottomBranchLeavers,
         width: 140,
         height: 140,
       });
-      layer.add(bottomBranchLeaversCircleImage);
-      bottomBranchLeaversCircleImage.on('mouseenter', function () {
+      layer.add(bottomBranchLeaversImage);
+      bottomBranchLeaversImage.on('mouseenter', function () {
         stage.container().style.cursor = 'pointer';
       });
-      bottomBranchLeaversCircleImage.on('mouseleave', function () {
+      bottomBranchLeaversImage.on('mouseleave', function () {
         stage.container().style.cursor = 'default';
       });
     };
-    bottomBranchLeaversCircle.src = '../assets/leavers-circle.svg';
+    bottomBranchLeavers.src = './assets/leavers-circle.svg';
 
     var bottomBranchArchiveTitle = new Konva.Text({
       x: 413,
@@ -468,6 +559,28 @@ window.onload = function() {
       fill: colorDarkGrey
     });
 
+    var bottomBranchhArchiveLink1 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Archive Data',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
+    var bottomBranchArchiveLink2 = new Konva.Text({
+      x: 1640,
+      y: 165,
+      text: 'Search And Restore',
+      fontSize: 22,
+      // fontStyle: 'bold',
+      fontFamily: fontMontSerrat,
+      fill: colorDarkGrey,
+      visible: false
+    });
+
     var bottomBranchArchiveBackground = new Konva.Circle({
       x: 100 + 70,
       y: stage.height() / 2,
@@ -475,98 +588,36 @@ window.onload = function() {
       fill: colorWhite,
     });
 
-    var bottomBranchArchiveCircle = new Image();
-    bottomBranchArchiveCircle.onload = function () {
-      var bottomBranchArchiveCircleImage = new Konva.Image({
+    var bottomBranchArchive = new Image();
+    bottomBranchArchive.onload = function () {
+      var bottomBranchArchiveImage = new Konva.Image({
         x: 600,
         y: 1100,
-        image: bottomBranchArchiveCircle,
+        image: bottomBranchArchive,
         width: 140,
         height: 140,
       });
-      layer.add(bottomBranchArchiveCircleImage);
-      bottomBranchArchiveCircleImage.on('mouseenter', function () {
+      layer.add(bottomBranchArchiveImage);
+      bottomBranchArchiveImage.on('mouseenter', function () {
         stage.container().style.cursor = 'pointer';
       });
-      bottomBranchArchiveCircleImage.on('mouseleave', function () {
+      bottomBranchArchiveImage.on('mouseleave', function () {
         stage.container().style.cursor = 'default';
       });
     };
-    bottomBranchArchiveCircle.src = '../assets/archive-circle.svg';
+    bottomBranchArchive.src = './assets/archive-circle.svg';
 
   // ** BUNDLED EVENTS TO BE MOVED INTO "cloudm-canvas-events.js" **
   // ** OUTER CIRCLE **
-  // Movers - Hover
-   outerCircleMoversTitle.on('mouseenter', function () {
-    stage.container().style.cursor = 'pointer';
-    outerCircleMoversTitle.textDecoration('underline');
-  });
-  outerCircleMoversTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-    outerCircleMoversTitle.textDecoration('');
-  });
-  // Joiners - Hover
-  outerCircleJoinersTitle.on('mouseenter', function () {
-    stage.container().style.cursor = 'pointer';
-    outerCircleJoinersTitle.textDecoration('underline');
-  });
-  outerCircleJoinersTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-    outerCircleJoinersTitle.textDecoration('');
-  });
-  // Automate - Hover
-  outerCircleAutomateTitle.on('mouseenter', function () {
-    stage.container().style.cursor = 'pointer';
-  });
-  outerCircleAutomateTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-  });
   // Movers - Click
-
   // Joiners - Click
   outerCircleJoinersTitle.on('click', function () {
     outerCircleJoinersLink1.show();
     outerCircleJoinersLink2.show();
     outerCircleJoinersLink3.show();
+    joinersZoomIn.play();
   });
   // Automate - Click
-
-  // ** MIGRATE / STARTERS BRANCH **
-  topBranchMigrateTitle.on('mouseover', function () {
-    stage.container().style.cursor = 'pointer';
-  });
-  topBranchMigrateTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-  });
-  topBranchStartersTitle.on('mouseover', function () {
-    stage.container().style.cursor = 'pointer';
-  });
-  topBranchStartersTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-  });
-
-  // ** LEAVERS / ARCHIVE BRANCH **
-  bottomBranchLeaversTitle.on('mouseover', function () {
-    stage.container().style.cursor = 'pointer';
-  });
-  bottomBranchLeaversTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-  });
-  bottomBranchArchiveTitle.on('mouseover', function () {
-    stage.container().style.cursor = 'pointer';
-  });
-  bottomBranchArchiveTitle.on('mouseleave', function () {
-    stage.container().style.cursor = 'default';
-  });
-
-    var period = 2000;
-    
-    // Create our animations
-    // var joinersZoomInAnimation = Konva.Animation(function (frame) {
-    //   var scale = Math.sin((frame.time * 2 * Math.PI) / period) + 0.001;
-    //   layer.scale({x: scale, y:scale})
-    // }, layer);
-
     // add the shapes to the layer
     layer.add(innerCircle);
     layer.add(innerCircleText);
@@ -611,4 +662,77 @@ window.onload = function() {
     function navigatePage(url) {
       location.assign(url); 
     }
+
+    // ** Tweens (Strictly used for Zoom in / out animations). **
+    // Joiners
+    var joinersZoomIn = new Konva.Tween({
+      node: stage,
+      duration: 1,
+      offsetX: 1300, 
+      offsetY: 50,
+      scaleX: 3,
+      scaleY: 3,
+      easing: Konva.Easings.EaseInOut,
+      onFinish: function () {
+        unhideNodesTween([outerCircleJoinersLink1, outerCircleJoinersLink2, outerCircleJoinersLink3]);
+        // Add remove / add click event listeners.
+      },
+    });
+    var joinersZoomOut = new Konva.Tween({
+      node: stage,
+      duration: 1,
+      offsetX: 0, 
+      offsetY: 0,
+      scaleX: 1,
+      scaleY: 1,
+      easing: Konva.Easings.EaseInOut,
+      onFinish: function () {
+        // Add remove / add click event listeners.
+      },
+    });
+
+    function unhideNodesTween(nodeArray) {
+      // Setting a timeout value to increment on each iteration. 
+      var timeOutValue = 0;
+      nodeArray.forEach(function(singleNode) {
+        console.log(singleNode);
+        var unhideNode = new Konva.Tween({
+          node: singleNode,
+          duration: 1,
+          visible: true,
+          opacity: 1,
+          easing: Konva.Easings.EaseInOut,
+        });
+        if(timeOutValue >= 400) {
+          setTimeout(function () {
+            unhideNode.play();
+          }, timeOutValue);
+        } else {
+          unhideNode.play();
+        }
+        timeOutValue += 400;
+      });
+    }
+
+    // Creating to loop through and apply similar styling to objects.
+    var drawnNodesArray = [innerCircleText, outerCircleMoversTitle, outerCircleJoinersTitle, outerCircleJoinersLink1, outerCircleJoinersLink2, outerCircleJoinersLink3, 
+      outerCircleAutomateTitle, outerCircleMoversLink1, outerCircleAutomateLink1, topBranchMigrateLink1, topBranchMigrateLink2, topBranchMigrateLink3, topBranchMigrateTitle, 
+      topBranchStartersLink1, topBranchStartersLink2, topBranchStartersLink3, bottomBranchArchiveTitle ,bottomBranchhArchiveLink1, bottomBranchArchiveLink2, bottomBranchLeaversTitle,
+      bottomBranchLeaversLink1, bottomBranchArchiveLink2, topBranchStartersTitle];
+  
+      drawnNodesArray.forEach(function(singleNode) {
+        singleNode.on('mouseover', function () {
+          stage.container().style.cursor = 'pointer';
+          singleNode.textDecoration('underline');
+        });
+        singleNode.on('mouseleave', function () {
+          stage.container().style.cursor = 'default';
+          singleNode.textDecoration('');
+        });
+        // singleNode.on('click', function () {
+        //   if (singleNode.name) {
+        //     location.assign(singleNode.name());
+        //   }
+        // });
+      });
 }

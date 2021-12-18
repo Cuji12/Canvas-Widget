@@ -6,3 +6,8 @@
 #cloudm-canvas {
   width: 100%;
 }
+
+#cloudm-canvas canvas {
+  -webkit-transform-origin: 1000 1000;
+          transform-origin: 1000 1000;
+}

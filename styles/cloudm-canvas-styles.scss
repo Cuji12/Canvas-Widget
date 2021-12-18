@@ -4,4 +4,7 @@
 }
 #cloudm-canvas {
   width: 100%;
+  canvas {
+    transform-origin: 1000 1000;
+  }
 }
