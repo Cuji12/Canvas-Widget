@@ -1,2 +1,1 @@
-Canvas-Widget
- Canvas widget for CloudM
+Canvas Widget.
