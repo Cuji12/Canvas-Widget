@@ -1,2 +1,2 @@
 # CloudM-Canvas-Widget
- Canvas widget for CloudM
+ Canvas widget
